@@ -1,0 +1,163 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+    color: $color__text-main;
+    font-size: var(--text-base-size, 1em);
+    font-family: var(--font-primary, sans-serif);
+}
+
+/**
+ * Basic styles for links
+ */
+
+a {
+  color: $color__link;
+  text-decoration: none;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: $color__link-hover;
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    color: $color-2;
+  }
+
+  &:focus,
+  &:active {
+    text-decoration: none !important;
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: $font__heading;
+    margin-bottom: .67em;
+}
+
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    line-height: var(--heading-line-height, 1.2);
+}
+
+h1, .h1 {
+    font-size: var(--text-xxl, 2.074em);
+}
+
+h2, .h2 {
+    font-size: var(--text-xl, 1.528em);
+}
+
+h3, .h3 {
+    font-size: var(--text-lg, 1.44em);
+}
+
+h4, .h4 {
+    font-size: var(--text-md, 1.2em);
+}
+
+h5, .h5 {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+small {
+    font-size: var(--text-xs, 0.833em);
+}
+
+p a,
+.blog-content p a,
+.read-more,
+.text-link:not(.btn-block) {
+    outline: none;
+    position: relative;
+    text-decoration: none;
+    z-index:1;
+    color: #000;
+    &:hover {
+        color: #000;
+        text-decoration: none;
+        background-size: 100% 2em;
+    }
+    background-image: -webkit-gradient(linear,left top,right top,color-stop(0,$lightred),to($lightred));
+    background-image: -webkit-linear-gradient(left,$lightred 0,$lightred 100%);
+    background-image: -o-linear-gradient(left,$lightred 0,$lightred 100%);
+    background-image: linear-gradient(to right,$lightred 0,$lightred 100%);
+    background-repeat: no-repeat;
+    background-size: 100% .1em;
+    background-position: 0 88%;
+    -webkit-transition: background-size .25s ease-in;
+    -o-transition: background-size .25s ease-in;
+    transition: background-size .25s ease-in;
+}
+
+.text-link.btn-block-styled {
+    padding: 10px 75px 10px 20px!important;
+    border: 0 none;
+    box-shadow: 0 1px 4px rgba(146,157,162,.5);
+    transform-origin: left;
+    transition: background 1s ease;
+    border-radius: 6px;
+    position: relative;
+    color: $color-1;
+    margin-bottom: 11px;
+    &:after {
+        background: $color-2;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 100%;
+        content: "➜";
+        color: rgb(255, 255, 255);
+        line-height: 100%;
+        transform-origin: left center;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: width 0.3s ease 0s;
+        border-radius: 0px 6px 6px 0px;
+    }
+    &:hover {
+        box-shadow: 0 1px 10px rgba(146,157,162,.5);
+        color: $color-2;
+        text-decoration: none;
+        &:after {
+            width: 65px;
+        }
+    }
+}
+
+.dark-theme .read-more {
+      text-decoration: none;
+       background-size: 100% 1em;
+       color: #2d2d2d !important;
+       &:hover {
+           color: #fff !important;
+           background-size: 100% .2em;
+       }
+}
+
+.text-link.btn-block {
+     padding: 10px 75px 10px 20px!important;
+     margin-bottom: 11px;
+     position: relative;
+     letter-spacing: 1px;
+     &.active:after,
+     &:hover:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 0.25rem;
+        background: $color-2;
+     }
+}

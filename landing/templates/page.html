@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load cms_tags sekizai_tags static %}
+
+{% block page-title %}
+<title>{% page_attribute 'page_title' %}{{ object.name }}</title>
+{% endblock %}
+
+{% block body-class %}page{% endblock %}
+{% block content %}
+<div class="page-content">
+    {% placeholder "content" %}
+</div>
+{% endblock content %}

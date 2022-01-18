@@ -1,0 +1,42 @@
+.gallery-cover {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    figure {
+        height: 100%;
+        position: relative;
+        transition: $transition;
+        img {
+            object-fit: cover;
+            transition: all .6s ease-in-out;
+        }
+
+        figcaption {
+            color: #000;
+            text-align: center;
+            margin: 20px 0;
+        }
+        &:hover {
+           img {
+                opacity: 0.9;
+                transform: scale(1.1);
+           }
+        }
+    }
+}
+
+.gallery-wrap {
+    background-color: #d2864f;
+    overflow: hidden;
+    position: relative;
+    img {
+        height: 400px;
+        object-fit: cover;
+        opacity: 0.9;
+        transition: all .6s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+

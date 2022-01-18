@@ -1,0 +1,27 @@
+#Pycharm stuff
+.idea/
+
+#python
+**.pyc
+
+#db files
+data/
+*.db
+*.db-journal
+
+#env files
+**.env
+venv/
+*_venv/
+
+#local dev files
+**.local
+
+#lock files
+*.lock
+*.lck
+package-lock.json
+
+#local static and media collection folders
+/static
+/media

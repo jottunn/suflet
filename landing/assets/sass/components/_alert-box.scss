@@ -1,0 +1,33 @@
+body {
+    .alert {
+        margin-bottom: 0 !important;
+        position: relative;
+        top: 60px;
+        z-index: 97;
+        width: 100%;
+        @include breakpoint(md) {
+            position: absolute;
+            top: 150px;
+            width: 45%;
+        }
+        right:0;
+
+        p {
+
+        }
+    }
+
+    &.dashboard {
+        .alert {
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            min-height: 100px;
+
+            .close {
+                font-size: 2rem;
+                width: auto;
+            }
+        }
+    }
+}

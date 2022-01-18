@@ -1,0 +1,94 @@
+.sidebar {
+    img {
+        max-width: 100%;
+    }
+
+    .sidebar-links {
+   /*      border-color: #eaeaea;
+        background-color: $bkggreen; */
+        padding: 19px 35px;
+        margin: 0 0 40px;
+        overflow: hidden;
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+                a {
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    position: relative;
+                    display: block;
+                    padding: 10px 15px;
+
+                    &:hover {
+                        background-color: $lightgray;
+                        color: $color-2;
+                        text-decoration: underline;
+                    }
+                }
+        }
+    }
+
+    .sidebar-news {
+     /*    border-color: #eaeaea;
+        background-color: $bkggreen; */
+        padding: 19px 35px;
+        margin: 0 0 40px;
+        overflow: hidden;
+
+        a {
+            color: $color-1;
+            text-decoration: none;
+            h5 {
+                color: $color-2;
+            }
+            &:hover {
+                p {
+                    color: $color-2;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        ul {
+            padding-left: 0;
+
+            li {
+                display:block;
+                margin-bottom: 10px;
+                padding-top: 18px;
+                &:not(:first-child) {
+                    border-top: 1px solid #222;
+                }
+                a {
+
+                }
+            }
+        }
+        .tab-post .imgwrap {
+            display: inline-block;
+            margin: 0 20px 0 0;
+            max-width: 33%;
+
+            img {
+                height: auto;
+            }
+        }
+
+        .tab-post .meta {
+            float: none;
+            margin: 0;
+            opacity: .5;
+            font-style: italic;
+        }
+
+         .tab-post-right {
+            display: inline-block;
+            width: 57%;
+            float: right;
+        }
+    }
+}
+
+.sidebar-bordered {
+    border-right: 1px solid #ddd;
+}

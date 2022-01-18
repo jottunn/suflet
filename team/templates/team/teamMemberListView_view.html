@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load cms_tags sekizai_tags static %}
+
+{% block page-title %}
+<title>ERP TOOLS - Suport Clienti</title>
+{% endblock %}
+
+{% block body-class %}page team{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <div class="section-team">
+        <div class="wrapper cols-4">
+            {% for member in object_list %}
+            <div class="member">
+                <div class="img-wrap">
+                    <img src="/media/{{ member.profile_pic }}" alt="{{ member.full_name }}"/>
+                </div>
+                <h2>
+                    {% if member.status == 'A' %}
+                    <img src="{% static 'landing/img/active.png' %}" alt="activ" width="30" height="30"/>
+                    {% endif %}
+                    {% if member.status == 'B' %}
+                    <img src="{% static 'landing/img/busy.png' %}" alt="ocupat" width="30" height="30"/>
+                    {% endif %}
+                    {% if member.status == 'U' %}
+                    <img src="{% static 'landing/img/offline.png' %}" alt="offline" width="40" height="40"/>
+                    {% endif %}
+                    {{ member.full_name }}
+                </h2>
+                <p>{{ member.description }}</p>
+                <p>{{ member.phone_number}}</p>
+                <a href="mailto:{{ member.email}}">{{ member.email}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script src="{{ chat_script_src }}" async></script>
+{% endblock content %}

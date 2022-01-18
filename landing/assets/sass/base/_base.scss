@@ -1,0 +1,91 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+   @include font-responsive($font-base-min, $font-base-max, $breakmin, $breakmax);
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+    background-color: $color__background-body;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $color__text-main;
+	font-family: $font__body;
+	font-weight: normal;
+	line-height: var(--body-line-height);
+	margin: 0;
+	text-rendering: optimizeLegibility;
+}
+
+.row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@include breakpoint(md) {
+    .row {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+img, iframe, video:not(.o-background_video) {
+    max-width: 100%;
+}
+
+.page-content {
+    padding: 50px 0;
+    @include breakpoint(md){
+        padding: 80px 0 120px;
+    }
+}
+
+.home {
+    .page-content {
+        padding: 0;
+    }
+}
+
+@include breakpoint(md){
+    .pt200 {
+        padding-top: 200px;
+    }
+}
+
+.section {
+  padding: 40px 0;
+  @include breakpoint(md){
+    padding: 80px 0;
+  }
+}
+
+.colored-bkg {
+    background: $color-2;
+    color: #fff;
+}
+
+.wrapper2 {
+    max-width: 980px !important;
+}
+
+.container {
+    width: 100% !important;
+    max-width: 100% !important;
+}

@@ -1,0 +1,84 @@
+/* Acordeon styles */
+.tab,
+.map-filters {
+  position: relative;
+  margin-bottom: 1px;
+  width: 100%;
+  overflow: hidden;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+    label {
+        position: relative;
+        color: $black;
+        display: block;
+        padding: 0 0 0 1em;
+        border-top: 2px solid $black;
+        font-weight: bold;
+        line-height: 3;
+        cursor: pointer;
+        &:hover {
+            color: $color-2;
+        }
+    }
+    .tab-content {
+        max-height: 0;
+        overflow: hidden;
+        background: transparent;
+        -webkit-transition: max-height 0.35s;
+        -o-transition: max-height 0.35s;
+        transition: max-height 0.35s;
+    }
+
+    .tab-content p {
+        margin: 1em;
+    }
+    /* :checked */
+    input:checked ~ .tab-content {
+        max-height: 10em;
+    }
+    /* Icon */
+    label::after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        width: 3em;
+        height: 3em;
+        line-height: 3;
+        text-align: center;
+    }
+    input[type="checkbox"] + label::after {
+        content: "+";
+    }
+
+    input[type="checkbox"]:checked + label::after {
+        content: "-";
+    }
+
+    input[type="checkbox"]:checked + label {
+        color: $color-2;
+    }
+}
+
+/* customs */
+.dashboard {
+    .tab {
+        label {
+
+            text-transform: none;
+            border-top: 0px solid #000;
+            border-bottom: 2px solid $black;
+            &:after {
+                width: 3rem;
+                height: 3rem;
+                line-height: 1.6;
+                text-align: center;
+
+            }
+        }
+    }
+}

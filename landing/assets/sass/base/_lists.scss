@@ -1,0 +1,9 @@
+.listings {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    li {
+        border-bottom: 1px solid $lightgray;
+        padding: 15px 0;
+    }
+}

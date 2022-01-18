@@ -1,0 +1,48 @@
+{% load cms_tags menu_tags sekizai_tags static i18n %}
+
+<nav class="main-nav" id="ksw-menu">
+    <!-- get parents of menu-1 -->
+    <ul class="main-menu" tabindex="0">
+        {% for child in children %}
+        <li class="child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %} {% if child.children %} menu-item-has-children has-dropdown {% endif %} main-menu-item menu-item-depth-0"
+            data-content="menu-item-{{ forloop.counter }}" id="menu-item-{{ forloop.counter }}">
+            <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" class="menu-link main-menu-link">
+                {{ child.get_menu_title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+<div class="morph-dropdown-wrapper">
+    <div class="dropdown-list">
+        <ul class="main-menu" tabindex="0">
+            <li class="go-back hide"><a href="#0"><i class="lnr lnr-chevron-left"></i>&nbsp;&nbsp;Menu</a></li>
+            {% for child in children %}
+            <li id="menu-item-{{forloop.counter}}"
+                class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-category {% if child.children %} menu-item-has-children has-dropdown dropdown {% endif %} {% if child.selected %} selected{% endif %}">
+                <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}"
+                   class="menu-link main-menu-link label">{{ child.get_menu_title }}</a>
+                {% if child.children %}
+                <div class="content">
+                    <div class="sub-menu-style-2">
+                        {% for c in child.children %}
+                        <div class="depth-2 {% if c.children|length > 0 %}has-kids{% endif %}">
+                            <a href="{{ c.attr.redirect_url|default:c.get_absolute_url }}"><p class="submenu-main">{{ c.get_menu_title }}</p></a>
+                            {% if c.children|length > 0 %}
+                                <div class="depth-3">
+                                    {% for c2 in c.children %}
+                                         <a href="{{ c2.attr.redirect_url|default:c2.get_absolute_url }}"><p class="h5">{{ c2.get_menu_title }}</p></a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="bg-layer" aria-hidden="true"></div>
+    </div> <!-- dropdown-list -->
+</div> <!-- morph-dropdown-wrapper -->

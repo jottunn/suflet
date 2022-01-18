@@ -1,0 +1,92 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+button,
+.button,
+input[type="submit"],
+.btn.btn-primary {
+    cursor: pointer;
+
+      @include button-transition;
+      background: #000;
+      border: 2px solid #000;
+      border-radius: 1px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: $font__heading;
+
+      letter-spacing: 1px;
+      @include breakpoint(md) {
+        letter-spacing: 2px;
+      }
+      line-height: var(--heading-line-height);
+      outline: none;
+      padding: 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+      vertical-align: middle;
+      transition: all 0.5s ease-out;
+
+      &:hover {
+        background: $color-2;
+        border: 2px solid $color-2;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &:visited {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &.red {
+        border: 1px solid $red;
+        &:hover {
+            background: $red;
+            border: 2px solid $red;
+            color: #fff !important;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none !important
+        }
+
+      }
+}
+
+.colored-bkg {
+    button,
+    .button,
+    input[type="submit"],
+    .btn.btn-primary {
+        &:hover {
+            background: none;
+            border: 2px solid #fff;
+            color: #fff !important;
+        }
+    }
+}
+
+.secondaryAction {
+    margin-left: 20px;
+}
+
+.linked-button {
+    text-decoration: underline;
+}
+
+.edit-mode-btns {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.makeitlink {
+    cursor: pointer;
+}

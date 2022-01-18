@@ -1,0 +1,11 @@
+.main-breadcrumbs {
+    span {
+        margin: 0 5px 0 0;
+        position: relative;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    a {
+      color: $lightgreen;
+    }
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load cms_tags sekizai_tags static %}
+
+{% block page-title %}
+<title>{% page_attribute 'page_title' %}{{ object.name }}</title>
+{% endblock %}
+
+{% block body-class %}page contact{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <div class="section contact-first-screen colored-bkg text-center">
+        <div class="wrapper wrapper2">
+            {% placeholder "content" %}
+        </div>
+    </div>
+    <div class="section faq">
+        <div class="wrapper wrapper2">
+            {% placeholder "faq" %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

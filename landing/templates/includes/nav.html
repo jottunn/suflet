@@ -1,0 +1,22 @@
+{% load cms_tags menu_tags sekizai_tags static i18n %}
+
+<div class="menu fixed" id="masthead">
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out"
+         class="wrapper">
+        <div id="logo-top-header">
+            <a href="/" class="site-logo sticky-logo">
+                <img data-src="{% static 'landing/img/logo_sticky.png' %}"
+                     alt="logo ERP TOOLS" class="no-effect lazy" width="203" height="50"/>
+            </a>
+
+            <a href="/" class="site-logo site-logo-first">
+                <img src="{% static 'landing/img/logo.png' %}" alt="logo ERP TOOLS" class="no-effect lazy"/>
+            </a>
+        </div>
+        <div class="cd-morph-dropdown">
+            <a href="#0" class="nav-trigger">Open Nav<span aria-hidden="true"></span></a>
+
+            {% show_menu 0 100 100 100 "includes/nav_includes/menu.html" %}
+        </div>
+    </div>
+</div>

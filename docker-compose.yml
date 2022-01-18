@@ -1,0 +1,41 @@
+# docker-compose.yml file
+version: '3.7'
+
+services:
+  web:
+    container_name: suflet-web
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    env_file:
+      - ./docker/.envs/django.env
+      - ./docker/.envs/nginx.env
+    command: ["/app/docker/django/start.sh"]
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  nginx:
+    container_name: suflet-nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    env_file:
+      - ./docker/.envs/nginx.env
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
+    command: /bin/bash -c "envsubst '$$URL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    volumes:
+      - ./static:/var/www/static/
+      - ./media:/var/www/media/
+    depends_on:
+      - web
+    restart: unless-stopped
+
+  redis:
+    container_name: suflet-redis
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+    restart: unless-stopped

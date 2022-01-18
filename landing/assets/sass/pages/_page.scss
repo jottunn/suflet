@@ -1,0 +1,20 @@
+
+    .banner-pic {
+        max-height: 370px;
+        overflow: hidden;
+        position: relative;
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+    }
+
+    .banner-inner {
+        position: absolute;
+        z-index: 9;
+        top: 25%;
+        width: 100%;
+        h1 {
+            color: #fff;
+        }
+    }

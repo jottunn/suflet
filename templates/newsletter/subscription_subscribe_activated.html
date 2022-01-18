@@ -1,0 +1,14 @@
+{% extends "newsletter/common.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}{% endblock title %}
+
+{% block body %}
+    <p class="text-center">{% trans "Your subscription has successfully been activated." %}</p>
+    <div class="page-content ty">
+        <div class="container text-center">
+            <span class="message ty">Thank you.</span>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,11 @@
+.contact-first-screen {
+    a {
+        color: #fff;
+        font-size: 2rem;
+        @include breakpoint(md) {
+            font-size: 3rem;
+        }
+        text-decoration: underline;
+        margin-top: 60px;
+    }
+}

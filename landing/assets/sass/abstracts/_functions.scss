@@ -1,0 +1,56 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+  @return asset($base, 'images/', $path);
+}
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+  @return asset($base, 'fonts/', $path);
+}
+
+
+// SASS mixin duplicating rucksack's cool cool solution on creating responsive font sizes.
+//
+// The calculation is:
+// min-size + (min-size - max-size) * ( (100vw - min-width) / ( max-width - min-width) )
+//
+@mixin font-responsive($fmin, $fdiff, $breakmin, $breakdiff) {
+    font-size: calc( #{$fmin} + #{$fdiff} * ((100vw - #{$breakmin}) / #{$breakdiff}) );
+    @media(max-width: $breakmin) {
+        font-size: $fmin;
+    }
+    @media(min-width: round($breakmin + $breakmax)) {
+        font-size: round($fmin + $fdiff);
+    }
+}
+
+$font-base-min: 14px;
+$font-base-max: 6;
+$breakmin: 420px;
+$breakmax: 348;
+
+
+// with variables
+// In this example the font size will fluctuate between 14px - 20px between 420px and 768px
+//

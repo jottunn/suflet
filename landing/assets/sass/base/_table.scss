@@ -1,0 +1,32 @@
+table {
+    max-width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    overflow: scroll;
+    th {
+        font-weight: bold;
+        vertical-align: bottom;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+     th, td {
+        padding: 0.47059em;
+        text-align: left;
+        border-top: 0.07143em solid #b8b8b8;
+    }
+
+    &.order-table {
+        td {
+            padding: 20px !important;
+        }
+    }
+}
+
+table thead:first-child tr th, table thead:first-child tr td {
+    border-top: 0;
+}
+
