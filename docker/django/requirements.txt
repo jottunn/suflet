@@ -1,8 +1,23 @@
 Django
 django-allauth
 django-cms
-django-debug-toolbar
+djangocms-light-gallery
+djangocms-admin-style
+djangocms-apphook-setup
+djangocms-attributes-field
 djangocms-blog
+djangocms-bootstrap4
+djangocms-file
+djangocms-googlemap
+djangocms-icon
+djangocms-installer
+djangocms-link
+djangocms-picture
+djangocms-snippet
+djangocms-style
+djangocms-text-ckeditor
+djangocms-video
+django-debug-toolbar
 django-redis
 gunicorn
 

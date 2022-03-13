@@ -187,6 +187,8 @@ INSTALLED_APPS = [
     'suflet',
     'team',
     'landing',
+    'djangocms_blog',
+    'taggit',
 ]
 
 LANGUAGES = (
