@@ -212,6 +212,7 @@ INSTALLED_APPS = [
     'landing',
     'djangocms_blog',
     'taggit',
+    'parler',
 ]
 
 LANGUAGES = (

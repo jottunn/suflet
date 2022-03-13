@@ -1,5 +1,6 @@
 Django
 django-allauth
+django-parler
 django-cms
 djangocms_bootstrap4
 djangocms-light-gallery
