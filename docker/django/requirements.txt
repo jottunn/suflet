@@ -1,6 +1,7 @@
 Django
 django-allauth
 django-cms
+djangocms_bootstrap4
 djangocms-light-gallery
 djangocms-admin-style
 djangocms-apphook-setup
