@@ -1,18 +1,11 @@
 // -----------------------------------------------------------------------------
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
-
-@font-face {
-    font-family: 'FuturaBook';
-    src: url('/static/landing/fonts/futurabookbt-webfont.eot');
-    src: url('/static/landing/fonts/futurabookbt-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/landing/fonts/futurabookbt-webfont.woff2') format('woff2'),
-         url('/static/landing/fonts/futurabookbt-webfont.woff') format('woff'),
-         url('/static/landing/fonts/FuturaBookBT.ttf') format('truetype'),
-         url('/static/landing/fonts/futurabookbt-webfont.svg#futura_bk_btbook') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+//FontAwesome
+$fa-font-path: "/static/landing/fonts/webfonts";
+@import "./fontawesome6/fontawesome.scss";
+@import "./fontawesome6/solid.scss";
+@import "./fontawesome6/brands.scss";
 
 
 @font-face {
@@ -25,6 +18,27 @@
 		url('/static/landing/fonts/Linearicons-Free.svg?w118d#Linearicons-Free') format('svg');
 	font-weight: normal;
 	font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Noe Text';
+    src:
+        url('/static/landing/fonts/Noe-Text-Regular.ttf') format('truetype'),
+        url('/static/landing/fonts/NoeText-Regular.woff2') format('woff2'),
+        url('/static/landing/fonts/NoeText-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noe Display';
+    src:
+         url('/static/landing/fonts/Noe-Display-Bold.ttf') format('truetype'),
+         url('/static/landing/fonts/NoeDisplay-Bold.woff2') format('woff2'),
+         url('/static/landing/fonts/NoeDisplay-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .lnr {

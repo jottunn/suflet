@@ -5,47 +5,57 @@
         <div class="cols-footer">
             <div class="contact">
                 <h2 class="footer-title">
-                    {% trans "Rather write us an email?" %}<br/>
-                    <a href="mailto:office@erptools.ro" target="_blank" style="text-decoration: underline;">office@erptools.ro</a>
+                    {% trans "Contacteaza-ne" %}<br/>
+                    <a href="mailto:sufletul.hasmasului@gmail.com" target="_blank" style="text-decoration: underline;">sufletul.hasmasului@gmail.com</a>
                 </h2>
+                 <div class="socials">
+                <a href="https://www.facebook.com/sufletul.hasmasului2015" target="_blank">
+                        <i class="fab fa-facebook-square fa-xl"></i>
+                    </a>&nbsp;&nbsp;
+                    <a href="https://www.instagram.com/sufletulhasmasului/" target="_blank">
+                        <i class="fab fa-instagram fa-xl"></i>
+                    </a>&nbsp;&nbsp;
+                    <a href="https://www.youtube.com/channel/UCZF5nb6HK243W0LstHKunGQ" target="_blank">
+                        <i class="fab fa-youtube fa-xl"></i>
+                    </a>
+            </div>
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="#">Page1</a><hr/></li><br/>
-                    <li><a href="#">Page2</a><hr/></li>
+                    <li>
+                         <a href="{% page_url 'about' as about_url %}{% if about_url %}{% page_url 'about-us' %}{% else %}#{% endif %}">{% trans "Despre Noi" %}</a><hr/></li><br/>
+                    <li>
+                          <a href="{% page_url 'blog' as blog_url %}{% if blog_url %}{% page_url 'blog' %}{% else %}#{% endif %}">{% trans "Blog" %}</a><hr/></li>
                 </ul>
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="#" target="_blank" class="privacy">Page3</a><hr/></li><br/>
-                    <li><a href="#">Page4</a><hr/></li>
+                    <li>
+                         <a href="{% page_url 'projects' as projects_url %}{% if projects_url %}{% page_url 'projects' %}{% else %}#{% endif %}">{% trans "Proiecte" %}</a><hr/></li><br/>
+                    <li>
+                          <a href="{% page_url 'contact' as contact_url %}{% if contact_url %}{% page_url 'contact' %}{% else %}#{% endif %}">{% trans "Contact" %}</a><hr/></li>
                 </ul>
             </div>
         </div>
         <div class="cols-footer">
             <div></div>
-            <div>
-                <a href="#" class="social facebook">
-                    <img data-src="{% static 'landing/img/icon_facebook.svg' %}" alt="facebook" class="lazy" width="20" height="20"/>
-                </a>
-            </div>
+
         </div>
     </div>
     <hr class="sep">
     <div class="wrapper">
         <div class="cols-footer">
             <div class="flex-container">
-                <img src="{% static 'landing/img/logo_footer.jpg' %}" alt="logo" class="footer-logo" width="80"/>
-                <p class="footer-contact">Cluj-Napoca, Piata Unirii Nr. 25 Ap.4</p>
-                <a href="callto:+40733355234" class="footer-tel">0733 355 234</a>
+                <img src="{% static 'landing/img/logo_footer.png' %}" alt="logo" class="footer-logo" width="130" style="opacity:0.65"/>
+                <p class="footer-contact"><br/>Asociația EcoSportivă "Sufletul Hășmașului"<br/>Bălan, Harghita<br/></p>
             </div>
             <div>&nbsp;</div>
             <div class="flex-container">
-                <h5 class="copyright">
-                    &copy; ERP TOOLS</h5>
+                <h5 class="copyright"><br/>
+                    &copy; AESH</h5>
             </div>
         </div>
     </div>
 </footer>
-<a href="#" class="ksw-ask ksw-top">{% trans "Online Support" %}</a>
+<!--<a href="#" class="ksw-ask ksw-top">{% trans "Online Support" %}</a>-->
 <a href="#" class="ksw-top">Top</a>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load cms_tags sekizai_tags static i18n  %}
+
+{% block page-title %}
+<title>{% page_attribute 'page_title' %}{{ object.name }}</title>
+{% endblock %}
+
+{% block body-class %}about{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    <div class="wrapper">
+        {% placeholder "first-screen" %}
+    </div>
+</div>
+<div class="colored-bkg page-content" style="position:relative;">
+    <div class="wrapper">
+        {% placeholder "second-screen" %}
+    </div>
+    <div class="right-image">
+        {% placeholder "second-screen-image" %}
+    </div>
+</div>
+<div class="page-content">
+    <div class="wrapper">
+        {% placeholder "team-title" %}
+        <div class="cols-3 team">
+            {% placeholder "team-section" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

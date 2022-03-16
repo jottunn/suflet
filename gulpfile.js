@@ -1,93 +1,113 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var calc = require('postcss-calc');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var cssmin = require('gulp-cssmin');
-var size = require('gulp-size');
-var imagemin = require('gulp-imagemin');
+// Initialize modules
+// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
+const { src, dest, watch, series, parallel } = require('gulp');
+// Importing all the Gulp-related packages we want to use
+const sass = require('gulp-sass')(require('sass'));
+const concat = require('gulp-concat');
+const terser = require('gulp-terser');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const replace = require('gulp-replace');
+const browsersync = require('browser-sync').create();
 
-var paths = {
-    styles: {
-        src: ['landing/assets/sass/ksw.scss'],
-        dest: 'landing/assets/css/',
-    },
-    scripts: {
-        src: ['landing/assets/js/**/*.js'],
-        dest: 'landing/static/landing/js/'
-    },
-    images: {
-        src:  'landing/assets/img/**/*.{jpg,jpeg,png}',
-        dest: 'landing/static/landing/img/'
-    },
-    fonts : {
-        src:  'landing/assets/fonts/**',
-        dest: 'landing/static/landing/fonts/'
-    }
+// File paths
+const files = {
+	scssPath: 'landing/assets/sass/**/*.scss',
+	jsPath: 'landing/assets/js/**/*.js',
 };
 
-gulp.task('sass', function () {
-    return gulp.src(paths.styles.src)
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(autoprefixer({
-            cascade: false
-        }))
-        .pipe(sourcemaps.write('.'))
-        .pipe(size({gzip: true, showFiles: true}))
-        .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest(paths.styles.dest));
-});
-
-gulp.task('concat-css', function () {
-  return gulp.src(['landing/assets/css/*'])
-    .pipe(concat("ksw_all.min.css"))
-    .pipe(gulp.dest('landing/static/landing/css/'));
-});
-
-// critical styles task
-gulp.task('critical', function () {
-  return gulp
-    .src('landing/assets/sass/critical.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-    .pipe(autoprefixer({
-        cascade: false
-    }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(size({gzip: true, showFiles: true}))
-    .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('landing/assets/css/'));
-})
-
-gulp.task('js', async function () {
-    gulp.src(paths.scripts.src)
-        .pipe(concat('ksw.min.js'))
-        .pipe(gulp.dest(paths.scripts.dest));
-});
-
-function images() {
-    return gulp.src(paths.images.src) //, {since: gulp.lastRun(images)})
-        .pipe(imagemin({optimizationLevel: 5}))
-        .pipe(gulp.dest(paths.images.dest));
+// Sass task: compiles the style.scss file into style.css
+function scssTask() {
+	return src(files.scssPath, { sourcemaps: true }) // set source and turn on sourcemaps
+		.pipe(sass()) // compile SCSS to CSS
+		.pipe(postcss([autoprefixer(), cssnano()])) // PostCSS plugins
+		.pipe(dest('landing/assets/css', { sourcemaps: '.' })); // put final CSS in dist folder with sourcemap
 }
 
-gulp.task('copyfonts', function() {
-    gulp.src(paths.fonts.src)
-        .pipe(gulp.dest(paths.fonts.dest));
-});
+// JS task: concatenates and uglifies JS files to script.js
+function jsTask() {
+	return src(
+		[
+			files.jsPath,
+			//,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
+		],
+		{ sourcemaps: true }
+	)
+		.pipe(concat('ksw.js'))
+		.pipe(terser())
+		.pipe(dest('landing/static/landing/js', { sourcemaps: '.' }));
+}
 
 
-gulp.task('watch', function () {
-    gulp.watch(paths.scripts.src, ['js']);
-    gulp.watch('landing/assets/sass/**/*.scss', ['sass']);
-    gulp.watch('landing/assets/css/**/*.css', ['concat-css']);
-    gulp.watch(paths.images.src, images);
-    gulp.watch(paths.fonts.src, ['copyfonts']);
-});
+function concatCssTask() {
+  return src(['landing/assets/css/*'])
+    .pipe(concat("ksw_all.min.css"))
+    .pipe(dest('landing/static/landing/css/'));
+}
+
+// Cachebust
+function cacheBustTask() {
+	var cbString = new Date().getTime();
+	return src(['index.html'])
+		.pipe(replace(/cb=\d+/g, 'cb=' + cbString))
+		.pipe(dest('.'));
+}
+
+// Browsersync to spin up a local server
+function browserSyncServe(cb) {
+	// initializes browsersync server
+	browsersync.init({
+		server: {
+			baseDir: '.',
+		},
+		notify: {
+			styles: {
+				top: 'auto',
+				bottom: '0',
+			},
+		},
+	});
+	cb();
+}
+function browserSyncReload(cb) {
+	// reloads browsersync server
+	browsersync.reload();
+	cb();
+}
+
+// Watch task: watch SCSS and JS files for changes
+// If any change, run scss and js tasks simultaneously
+function watchTask() {
+	watch(
+		[files.scssPath, files.jsPath],
+		{ interval: 1000, usePolling: true }, //Makes docker work
+		series(parallel(scssTask, concatCssTask, jsTask), cacheBustTask)
+	);
+}
+
+// Browsersync Watch task
+// Watch HTML file for change and reload browsersync server
+// watch SCSS and JS files for changes, run scss and js tasks simultaneously and update browsersync
+function bsWatchTask() {
+	watch('index.html', browserSyncReload);
+	watch(
+		[files.scssPath, files.jsPath],
+		{ interval: 1000, usePolling: true }, //Makes docker work
+		series(parallel(scssTask, concatCssTask, jsTask), cacheBustTask, browserSyncReload)
+	);
+}
+
+// Export the default Gulp task so it can be run
+// Runs the scss and js tasks simultaneously
+// then runs cacheBust, then watch task
+exports.default = series(parallel(scssTask, concatCssTask, jsTask), cacheBustTask, watchTask);
+
+// Runs all of the above but also spins up a local Browsersync server
+// Run by typing in "gulp bs" on the command line
+exports.bs = series(
+	parallel(scssTask, concatCssTask, jsTask),
+	cacheBustTask,
+	browserSyncServe,
+	bsWatchTask
+);

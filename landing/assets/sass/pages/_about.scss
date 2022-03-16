@@ -1,37 +1,58 @@
-.section-team {
-    padding-top: 3rem;
+.banner-pic {
+    max-height: 550px;
+    overflow: hidden;
+    position: relative;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
 }
 
-@include breakpoint(md) {
-
-    .section-team {
-        padding-top: 6rem;
+.banner-inner {
+    position: absolute;
+    z-index: 9;
+    top: 25%;
+    width: 100%;
+    h1 {
+        color: #fff;
     }
+}
 
-    .cols-2-team {
-        .member:nth-child(odd) {
-            margin-top: -9.25rem;
+.team {
+    > div {
+        @include breakpoint(md) {
+            padding: 40px;
         }
-
-        .img-wrap {
-            overflow: hidden;
-            position: relative;
-
+        position: relative;
+        transition: all .6s ease-in-out;
+        img {
+           filter: grayscale(100%);
+           transition: all .6s ease-in-out;
+        }
+        &:hover {
             img {
-                object-fit: cover;
-                width: 100%;
-                filter: grayscale(40%);
-                transition: transform .8s ease;
-                &:hover {
-                    transform: scale(1.1);
-                    filter: grayscale(1%);
-                }
+                filter: grayscale(0);
             }
         }
     }
+
+    p {
+        margin: 1.5em 2.5em;
+    }
 }
-@media screen and (max-width: 900px) {
-    .member {
-        margin-bottom: 3rem;
+
+.colored-bkg .wrapper {
+    z-index: 1;
+}
+
+.right-image {
+    img {
+        max-height: 800px;
+        max-width: 30%;
+        float:right;
+        position:absolute;
+        right:0;
+        top:180px;
+        z-index: 0;
     }
 }

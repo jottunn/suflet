@@ -34,20 +34,19 @@
   'components/back-top',
   'components/collapse',
   'components/alert-box',
-  'components/loader',
   'components/tabs',
   'components/breadcrumbs',
   'components/gallery-cover',
   'components/hovered-box',
-  'components/slideshow';
+  'components/slideshow',
+  'components/hover-effects';
 
 // 6. Page-specific styles
 @import
   'pages/home',
   'pages/about',
-  'pages/contact',
-  'pages/page';
-//  'pages/blog';
+  'pages/page',
+  'pages/blog';
 
 // 7. Themes
 @import

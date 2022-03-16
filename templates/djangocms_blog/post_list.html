@@ -5,9 +5,9 @@
 <link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
 {% block content_blog %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
+<div class="page-content">
+    <div class="wrapper2">
+        <div class="section-sticky">
             <section class="blog-list">
                 {% for post in post_list %}
                 {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
@@ -34,6 +34,9 @@
                 </nav>
                 {% endif %}
             </section>
+            <div class="sticky recent-articles">
+                  {% static_placeholder 'blog-sidebar' %}
+            </div>
         </div>
     </div>
 </div>

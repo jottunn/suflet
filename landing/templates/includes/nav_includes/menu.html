@@ -29,11 +29,11 @@
                         <div class="depth-2 {% if c.children|length > 0 %}has-kids{% endif %}">
                             <a href="{{ c.attr.redirect_url|default:c.get_absolute_url }}"><p class="submenu-main">{{ c.get_menu_title }}</p></a>
                             {% if c.children|length > 0 %}
-                                <div class="depth-3">
-                                    {% for c2 in c.children %}
-                                         <a href="{{ c2.attr.redirect_url|default:c2.get_absolute_url }}"><p class="h5">{{ c2.get_menu_title }}</p></a>
-                                    {% endfor %}
-                                </div>
+                            <div class="depth-3">
+                                {% for c2 in c.children %}
+                                <a href="{{ c2.attr.redirect_url|default:c2.get_absolute_url }}"><p class="h5">{{ c2.get_menu_title }}</p></a>
+                                {% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -43,6 +43,9 @@
             </li>
             {% endfor %}
         </ul>
+        <div class="show-only-on-small">
+            {% language_chooser %}
+        </div>
         <div class="bg-layer" aria-hidden="true"></div>
     </div> <!-- dropdown-list -->
 </div> <!-- morph-dropdown-wrapper -->

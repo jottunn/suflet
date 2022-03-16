@@ -3,10 +3,9 @@
  */
 body {
     color: $color__text-main;
-    font-size: var(--text-base-size, 1em);
+    font-size: 1rem;
     font-family: var(--font-primary, sans-serif);
 }
-
 /**
  * Basic styles for links
  */
@@ -71,9 +70,7 @@ small {
     font-size: var(--text-xs, 0.833em);
 }
 
-p a,
 .blog-content p a,
-.read-more,
 .text-link:not(.btn-block) {
     outline: none;
     position: relative;
@@ -81,20 +78,9 @@ p a,
     z-index:1;
     color: #000;
     &:hover {
-        color: #000;
+        color: $color-2;
         text-decoration: none;
-        background-size: 100% 2em;
     }
-    background-image: -webkit-gradient(linear,left top,right top,color-stop(0,$lightred),to($lightred));
-    background-image: -webkit-linear-gradient(left,$lightred 0,$lightred 100%);
-    background-image: -o-linear-gradient(left,$lightred 0,$lightred 100%);
-    background-image: linear-gradient(to right,$lightred 0,$lightred 100%);
-    background-repeat: no-repeat;
-    background-size: 100% .1em;
-    background-position: 0 88%;
-    -webkit-transition: background-size .25s ease-in;
-    -o-transition: background-size .25s ease-in;
-    transition: background-size .25s ease-in;
 }
 
 .text-link.btn-block-styled {
@@ -160,4 +146,27 @@ p a,
         width: 0.25rem;
         background: $color-2;
      }
+}
+
+.subtitle {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 16px;
+}
+
+.read-more {
+    letter-spacing: 1px;
+    color: $color-1;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 3px solid $color-1;
+    font-weight: bold;
+    font-size: 1rem;
+    &:hover {
+         color: $color-2;
+         text-decoration: none;
+         border-bottom: 3px solid $color-2;
+    }
 }

@@ -1,0 +1,39 @@
+{% load djangocms_blog i18n easy_thumbnails_tags cms_tags %}
+
+<article id="post-{{ post.slug }}" class="post-item project-item">
+
+    <a href="{{ post.get_absolute_url }}" class="tilter tilter--4 project-list">
+        <figure class="tilter__figure">
+            {% if image and post.main_image %}
+            {% thumbnail post.main_image post.full_image_options.size as main_image_full %}
+
+            <img src="{% thumbnail post.main_image 0x400 crop upscale %}" alt="{{ post.main_image.default_alt_text }}" class="tilter__image" />
+
+            {% else %}
+            {% media_images post as previews %}
+            {% for preview in previews %}<img data-src="{{ preview }}" alt="" class="lazy"/>{% endfor %}
+            {% endif %}
+
+            <div class="tilter__deco tilter__deco--shine">
+                <div></div>
+            </div>
+            <div class="tilter__deco tilter__deco--overlay"></div>
+            <figcaption class="tilter__caption">
+                <div class="tilter__description">
+                    {% if not TRUNCWORDS_COUNT %}
+                    {% render_model post "abstract" "" "" "safe" %}
+                    {% else %}
+                    {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe" %}
+                    {% endif %}
+                </div>
+            </figcaption>
+        </figure>
+    </a>
+    <div style="margin:1.5em;">
+        <h3>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        {% if post.subtitle %}
+        <p>{{ post.subtitle }}</p>
+        {% endif %}
+    </div>
+</article>

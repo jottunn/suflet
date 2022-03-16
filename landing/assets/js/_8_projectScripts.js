@@ -51,30 +51,6 @@ jQuery(document).ready(function(){
         );
     });
 
-    //simple slideshow
-    if (jQuery("#slideshow").length) {
-        jQuery("#slideshow > div.container:gt(0)").hide();
-            setInterval(function() {
-              $('#slideshow > div.container:first')
-                .fadeOut(1000)
-                .next('div.container')
-                .fadeIn(1000)
-                .end()
-                .appendTo('#slideshow');
-            },  6000);
-    }
-
-    //set left margin for pic on homepage
-    if (jQuery(".section.third-screen").length) {
-        var leftOff = jQuery(".section.third-screen").find(".wrapper").offset().left;
-        jQuery(".home-picture").css('margin-left', leftOff + "px");
-
-        jQuery(window).resize(function(){
-            var leftOff = jQuery(".section.third-screen").find(".wrapper").offset().left;
-            jQuery(".home-picture").css('margin-left', leftOff + "px");
-        })
-    }
-
     //nav on mobile
      var viewportWidth = $(window).width();
     if (viewportWidth <= 1200) {
@@ -127,7 +103,7 @@ jQuery(document).ready(function(){
         });
     })
 
-    var img1 = jQuery("#home-bkg").find('img').attr('src');
+   var img1 = jQuery("#home-bkg").find('img').attr('src');
     jQuery("body.home").css('background-image', 'url("'+img1+'")');
 
     if (viewportWidth <= 500) {

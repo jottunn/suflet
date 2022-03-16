@@ -2,18 +2,34 @@
 
 <div class="menu fixed" id="masthead">
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out"
-         class="wrapper">
+         class="text-center">
         <div id="logo-top-header">
-            <a href="/" class="site-logo sticky-logo">
-                <img data-src="{% static 'landing/img/logo_sticky.png' %}"
-                     alt="logo ERP TOOLS" class="no-effect lazy" width="203" height="50"/>
-            </a>
-
-            <a href="/" class="site-logo site-logo-first">
-                <img src="{% static 'landing/img/logo.png' %}" alt="logo ERP TOOLS" class="no-effect lazy"/>
-            </a>
+            <div class="wrapper header-grid">
+                <div class="social-media">
+                    <a href="https://www.facebook.com/sufletul.hasmasului2015" target="_blank">
+                        <i class="fab fa-facebook-square fa-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sufletulhasmasului/" target="_blank">
+                        <i class="fab fa-instagram fa-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCZF5nb6HK243W0LstHKunGQ" target="_blank">
+                        <i class="fab fa-youtube fa-2xl"></i>
+                    </a>
+                </div>
+                <a href="/" class="site-logo site-logo-first">
+                    <img src="{% static 'landing/img/logo.png' %}" alt="AESH" class="no-effect lazy"/>
+                </a>
+                <div class="header-buttons">
+                    {% language_chooser %}
+                    {% static_placeholder 'nav-button' %}
+                </div>
+            </div>
         </div>
         <div class="cd-morph-dropdown">
+             <a href="/" class="site-logo mobile-logo">
+                    <img data-src="{% static 'landing/img/logo.png' %}"
+                         alt="AESH" class="no-effect lazy"/>
+                </a>
             <a href="#0" class="nav-trigger">Open Nav<span aria-hidden="true"></span></a>
 
             {% show_menu 0 100 100 100 "includes/nav_includes/menu.html" %}

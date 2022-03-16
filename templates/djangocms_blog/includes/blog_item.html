@@ -2,20 +2,33 @@
 
 <article id="post-{{ post.slug }}" class="post-item">
     <header>
-        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        {% if post.subtitle %}
-        <h4>{{ post.subtitle }}</h4>
-        {% endif %}
-    </header>
+        <p style="text-transform:uppercase;font-size:0.9rem;"> {% if post.date_published %}
+            {{ post.date_published|date:"DATE_FORMAT" }}
+            {% endif %}</p>
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
 
+    </header>
+    <div class="blog-visual">
+        {% if image and post.main_image %}
+        {% thumbnail post.main_image post.full_image_options.size as main_image_full %}
+        <a href="{{ post.get_absolute_url }}"><img data-src="{% thumbnail post.main_image 1000x0 crop upscale %}" alt="{{ post.main_image.default_alt_text }}" class="lazy" alt="{{ post.title }}"/></a>
+        {% else %}
+        {% media_images post as previews %}
+        {% for preview in previews %}<img data-src="{{ preview }}" alt="" class="lazy"/>{% endfor %}
+        {% endif %}
+    </div>
     <div class="blog-lead">
+        <br/>
+        {% if post.subtitle %}
+        <h3>{{ post.subtitle }}</h3>
+        {% endif %}
         {% if not TRUNCWORDS_COUNT %}
         {% render_model post "abstract" "" "" "safe" %}
         {% else %}
         {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe" %}
         {% endif %}
     </div>
-    <footer class="read-more">
-
+    <footer>
+        <a href="{{ post.get_absolute_url }}" class="read-more">{% trans "Citeste" %}</a>
     </footer>
 </article>

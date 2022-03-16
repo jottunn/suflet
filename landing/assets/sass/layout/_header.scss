@@ -5,12 +5,13 @@
 #masthead {
     top: 0;
     width: 100%;
-    height: 60px;
-    position: absolute;
+    position: relative;
+    margin: auto;
+
     @media only screen and (min-width: 1205px) {
-        height: 135px;
+        height: auto;
     }
-    @media only screen and (max-width: 1204px) {
+    @media only screen and (max-width: 800px) {
         border-bottom: 1px solid #ddd;
         position: fixed;
     }
@@ -21,62 +22,60 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform : translate3d(0, 0, 0);
     z-index: 99;
-    background: #fff;
+    background: transparent;
 
     &:hover,
-    &.sticky {
+    &.opac {
         opacity:1;
     }
-
-     .sticky-logo {
-        display: none;
-        @media only screen and (max-width: 1204px) {
-              display: inline-block;
-        }
-        img {
-            left: 0;
-            top: 6px;
-            position :relative;
-            z-index: 9999999;
-          }
-     }
 
     /* not  mobile */
     .site-logo-first {
         display: none;
-        @media only screen and (min-width: 1204px) {
+        @media only screen and (min-width: 800px) {
             top: 0;
             display: inline-block;
 
           img {
             max-width: 100%;
-            max-height: 130px;
+            height: 90px;
+            margin: 5px auto;
             left: 0;
-            top: 5px;
+            top: 0;
             position :relative;
             z-index: 9999999;
           }
         }
     }
 
+
     &.opac {
         background: #fff !important;
         position: fixed;
-        height: 60px;
-        border-bottom: 1px solid #ddd;
-        .site-logo-first {
+        height: auto;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        #logo-top-header {
             display: none;
         }
-        .sticky-logo {
-            display: inline-block;
-        }
     }
-}
-@include breakpoint(md) {
-    .home {
-        #masthead {
-             background: rgba(230,230,230, 0.4);
+
+    .mobile-logo {
+        display: none;
+    }
+    @media only screen and (max-width: 800px) {
+        #logo-top-header {
+            display: none;
         }
+
+        .mobile-logo {
+            display: block;
+            width: 70px;
+            float: left;
+            margin-left: 15px;
+        }
+
+        #masthead, .cd-morph-dropdown {border: none;}
     }
 }
 
@@ -85,28 +84,34 @@
     display: none;
 }
 
-@media only screen and (max-width: 900px) {
-    .sticky-logo {
-        display: inline-block !important;
-        img {
-            max-height: 50px;
-            width: auto;
-            position: relative;
-            top: 5px;
-        }
-    }
-}
 
 #logo-top-header {
-    display: inline-block;
+    display: block;
+    border-bottom: 2px solid #000;
+}
 
-    @media only screen and (min-width: 1199px) and (max-width: 1259px) {
-        max-width: 200px;
+.header-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  align-items: center;
+  .social-media {
+    text-align: left;
+    position: relative;
+    top: 8px;
+    a {
+        color: $color-1;
+        padding-right: 5px;
     }
-     @media only screen and (min-width: 1260px) and (max-width: 1299px) {
-        max-width: 230px;
+    a:hover {
+        color: $color-2;
+        text-decoration: none;
     }
-     @media only screen and (min-width: 1300px) and (max-width: 1350px) {
-        max-width: 260px;
-    }
+  }
+
+  .header-buttons {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 8px;
+  }
 }

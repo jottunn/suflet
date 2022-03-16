@@ -4,8 +4,8 @@
 
 /// Regular font family
 
-$font__body: "Lato", sans-serif;
-$font__heading: -apple-system,BlinkMacSystemFont, 'FuturaBook', "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+$font__body: "Noe Text", sans-serif;
+$font__heading: -apple-system,BlinkMacSystemFont, 'Noe Display', "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 $font-nav: $font__heading;
 $font__code: Menlo, monaco, Consolas, Lucida Console, monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
@@ -29,7 +29,7 @@ $font__pre: "Courier 10 Pitch", Courier, monospace;
 --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
 
 // line-height
---body-line-height: 1.4;
+--body-line-height: 1.7;
 --heading-line-height: 1.2;
 
 // capital letters - used in combo with the lhCrop mixin
@@ -46,10 +46,12 @@ $font-nav-size-small: 1.1rem;
 $font-nav-size-medium: 1rem;
 
 //Color Pallete
-$color-1: #333;
-$color-2: #ef3451;
-$color-3: #d5ece2;
-$color-bkg: #f7fcfc;
+$color-1: #27363b;
+$color-2: #1d552e;
+
+$color-3: #1db954;
+$color-4: #65ccb7; /*nice green*/
+$color-bkg: #def2f1;
 $lightgray: #2b2b2b;
 $lightergray: #9d9d9d;
 $lightred: #fb5762;
@@ -74,7 +76,7 @@ $color-main-menu-active: $color-2;
 $color-sub-menu-active: $color-2;
 
 // Backgrounds
-$color__background-body: #fff;
+$color__background-body: #ffffff;
 $color__background-input: transparent;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccccc;

@@ -3,31 +3,17 @@
 {% load cms_tags sekizai_tags static i18n  %}
 
 {% block page-title %}
-<title>{% trans "ERP TOOLS" %}</title>
+<title>{% trans "Asociația EcoSportivă Sufletul Hășmașului" %}</title>
 {% endblock %}
 
 {% block body-class %}home{% endblock %}
 
 {% block content %}
 <div class="page-content">
-    <div class="section first-screen">
-        {% placeholder "first-screen" %}
-    </div>
-    <div class="section second-screen colored-bkg">
-        <div class="wrapper">
-            {% placeholder "second-screen" %}
-        </div>
-    </div>
-    <div class="home-picture-wrap">
-        <div class="home-picture">
-            <div id="slideshow">
-                {% placeholder "visual" %}
-            </div>
-        </div>
-    </div>
-    <div class="section third-screen">
-        <div class="wrapper">
-            {% placeholder "third-screen" %}
+    <div class="first-screen wrapper">
+        {% placeholder "homepage-title" %}
+        <div class="narrow-text">
+             {% placeholder "homepage-text" %}
         </div>
     </div>
 </div>

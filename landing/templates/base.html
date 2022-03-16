@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% page_attribute 'meta_description' %}">
-    <meta property="og:site_name" content="erptools.com">
+    <meta property="og:site_name" content="aesh.eu">
     <meta property="og:title" content="{% page_attribute 'page_title' %}{{ object.name }}">
     <meta property="og:description" content="{% page_attribute 'meta_description' %}"/>
     <meta property="og:url" content="{{ request.path }}">
@@ -21,14 +21,12 @@
     <link rel="mask-icon" href="{% static 'landing/img/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
+
     <link rel="stylesheet" type="text/css" href="/static/landing/css/ksw_all.min.css"/>
 
     {% block thumbnail %}{% endblock %}
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="{% static 'landing/img/favicon/apple-touch-icon.png' %}">
-    <link rel="preload" href="/static/landing/fonts/futurabookbt-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-    {% include 'includes/fonts.html' %}
     <!-- Project critical CSS -->
 
     {% block head %}{% endblock %}

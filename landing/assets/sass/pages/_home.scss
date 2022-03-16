@@ -4,36 +4,12 @@
 
 /* first screen */
 .first-screen {
-    .content-list {
-        grid-column: 1/3;
+    min-height: 600px;
+    @include breakpoint(lg) {
+        min-height: 900px;
     }
-
-    padding-top: 60px;
-
-     @include breakpoint(md) {
-        padding: 135px 0 0;
-
-        .content-list {
-           max-width: 60%;
-        }
-     }
-
-/*     .login-form-container {
-        background: rgba(256,256,256, 0.7);
-        grid-column: 3/4;
-        padding: 20px;
-        @include breakpoint(md) {
-            padding: 50px;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-    } */
 }
-
 .second-screen {
-    color: #fff;
     @include breakpoint(md) {
         padding-bottom: 150px;
     }
@@ -72,13 +48,22 @@
             height: 600px;
         }
     }
+
+    .narrow-text {
+        margin: auto;
+        width: 40%;
+    }
 }
 
-body.home {
-/*     background-image:url('/static/landing/img/BACKGROUND1d.jpg'); */
-    background-attachment: fixed;
-    background-position: center;
+.home {
+	box-shadow: inset 0 0 0 2000px rgba(221, 225, 225, 0.8);
+
     background-repeat: no-repeat;
-    background-color: #e6e6e6;
     background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    @include breakpoint(md) {
+         box-shadow: inset 0 0 0 2000px rgba(221, 225, 225, 0.63);
+         background-size: 100%;
+    }
 }

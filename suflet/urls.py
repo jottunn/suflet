@@ -21,6 +21,7 @@ urlpatterns += i18n_patterns(
     re_path('^admin/', admin.site.urls),  # NOQA
     path('team/', include('team.urls', namespace='team')),
     path('accounts/', include('allauth.urls')),
+    path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     re_path(r'^', include('cms.urls')),
 )
 

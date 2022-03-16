@@ -164,6 +164,7 @@ CACHES = {
 
 
 INSTALLED_APPS = [
+    'aldryn_apphooks_config',
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -207,11 +208,15 @@ INSTALLED_APPS = [
     'treebeard',
     'filer',
     'easy_thumbnails',
+    'light_gallery',
     'suflet',
     'team',
     'landing',
     'djangocms_blog',
     'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'sortedm2m',
     'parler',
 ]
 
@@ -250,7 +255,8 @@ CMS_TEMPLATES = (
     ## Customize this
     ('page.html', 'Page'),
     ('homepage.html', 'HomePage'),
-    ('contact.html', 'Contact'),
+    ('about.html', 'About'),
+    ('page-with-banner.html', 'Page with banner'),
 )
 
 CMS_PERMISSION = True
@@ -271,7 +277,9 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
-
+# djangocms-blog
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
 
 #allauth settings
 ACCOUNT_ADAPTER = 'team.account_adapter.NoNewUsersAccountAdapter'
@@ -287,3 +295,8 @@ FILE_UPLOAD_PERMISSIONS     = 0o644
 
 #djangocms-bootstrap4 settings
 DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE = [1440, 720]
+
+DJANGOCMS_PICTURE_TEMPLATES = [
+    ('lazy', 'LazyLoaded image'),
+    ('tilted', 'Tilted image'),
+]
