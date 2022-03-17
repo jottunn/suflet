@@ -20,7 +20,7 @@ function start_development() {
 function start_production() {
     # use gunicorn for production server here
     manage_app
-    gunicorn erpTools.wsgi -w 2 -b 0.0.0.0:8000 --chdir=/app --log-file -
+    gunicorn suflet.wsgi -w 2 -b 0.0.0.0:8000 --chdir=/app --log-file -
 }
 
 if [ ${DJANGO_DEBUG} == "True" ]; then
