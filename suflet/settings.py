@@ -105,6 +105,7 @@ SITE_ID = 1
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
         'DIRS': [os.path.join(BASE_DIR, 'suflet', 'templates'),
                  os.path.join(BASE_DIR, 'landing', 'templates'),
                  os.path.join(BASE_DIR, 'templates'),
@@ -123,10 +124,10 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'cms.context_processors.cms_settings'
             ],
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader'
-            ],
+            # 'loaders': [
+            #     'django.template.loaders.filesystem.Loader',
+            #     'django.template.loaders.app_directories.Loader'
+            # ],
         },
     },
 ]
