@@ -1,9 +1,4 @@
 jQuery(document).ready(function(){
-     //recaptcha - remove error border /message
-    jQuery(".g-recaptcha").hover(function(){
-        jQuery(this).find('iframe').css('border', 'none');
-    });
-
     //add sticky class to #masthead
     jQuery(window).scroll(function () {
          if (jQuery(this).scrollTop() >= 400) {

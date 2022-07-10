@@ -6,10 +6,12 @@
     background-color: $color-1;
     color: #fff;
     padding: 20px 0 40px;
-    @include breakpoint(md) {
-        padding: 100px 0;
-    }
     position: relative;
+    .wrapper.first {
+        @include breakpoint(md) {
+            margin-top: 80px;
+        }
+    }
     .nav {
         ul {
             list-style-type: none;

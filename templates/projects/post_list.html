@@ -8,7 +8,7 @@
 {% block content_blog %}
 <div class="page-content">
     <div class="wrapper">
-        <section class="blog-list">
+        <section class="blog-list projects-list">
             <div class="cols-4">
                 {% for post in post_list %}
                 {% include "projects/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}

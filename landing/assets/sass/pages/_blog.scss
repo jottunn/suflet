@@ -2,9 +2,6 @@
     article {
         padding: 4em 0;
         border-bottom: 1px solid #ddd;
-        &:first-child {
-            padding-top: 0;
-        }
         @include breakpoint(md) {
             padding: 2em 0;
             h2 {
@@ -13,6 +10,14 @@
                     color: $color-1;
                 }
             }
+        }
+    }
+}
+
+.blog-list:not(.projects-list) {
+    article {
+        &:first-child {
+            padding-top: 0;
         }
     }
 }
