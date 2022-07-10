@@ -9,7 +9,6 @@ class Command(BaseCommand):
         # parser.add_argument('pull', help='pull changes from origin repo')
         parser.add_argument('--redeploy', action='store_true', help='reinstall ssl letsencrypt certificates')
         parser.add_argument('--build', action='store_true', help='build docker images')
-        parser.add_argument('--reinstall_ssl_certs', action='store_true', help='reinstall ssl letsencrypt certificates')
 
 
 
@@ -33,9 +32,5 @@ class Command(BaseCommand):
                 print(e)
             subprocess.call(['docker-compose', 'up'])
 
-        if reinstall_ssl_certs:
-            self.stdout.write(self.style.SUCCESS('Reinstalling ssl certificates.'))
-            subprocess.call(['docker', 'exec', '-it', 'et-nginx', 'certbot', '--nginx', '--reinstall', '--redirect',
-                             '--domains', 'erptools.ro,www.erptools.ro', '--non-interactive'])
 
 
