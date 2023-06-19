@@ -1,5 +1,5 @@
 #django+gunicorn dockerfile
-FROM python:3.10
+FROM python:3.11
 
 LABEL eu.suflet.service: "suflet-web"
 LABEL eu.suflet.description: "Main web process, django+gunicorn"
