@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + '1' for ip in ips] + ['127.0.0.1', '0.0.0.0']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.{}'.format(os.getenv('LOAD_BALANCER_IP', None)), 'https://*.127.0.0.1']
 
 # Application definition
 ROOT_URLCONF     = 'suflet.urls'
