@@ -41,8 +41,10 @@ ALLOWED_HOSTS = [
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + '1' for ip in ips] + ['127.0.0.1', '0.0.0.0']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.{}'.format(os.getenv('LOAD_BALANCER_IP', None)),
-                        'https://{}'.format(os.getenv('LOAD_BALANCER_IP', None)),
+CSRF_TRUSTED_ORIGINS = ['https://*.{}'.format(os.getenv('APP_DOMAIN_NAME', None)),
+                        'https://{}'.format(os.getenv('APP_DOMAIN_NAME', None)),
+                        'http://*.{}'.format(os.getenv('APP_DOMAIN_NAME', None)),
+                        'http://{}'.format(os.getenv('APP_DOMAIN_NAME', None)),
                         'https://*.127.0.0.1']
 
 # Application definition
